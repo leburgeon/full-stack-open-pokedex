@@ -3,8 +3,14 @@ import react from 'eslint-plugin-react'
 import jest from 'eslint-plugin-jest'
 import globals from 'globals'
 
-
 export default [
+  {
+    ignores: [
+      '**/webpack.config.js', // be explicit — see point below
+      'node_modules/',
+      'dist/'
+    ]
+  },
   js.configs.recommended,
   {
     plugins: {
@@ -45,19 +51,19 @@ export default [
       'no-restricted-syntax': [
         'error',
         {
-          selector: "CallExpression[callee.name='require']",
+          selector: 'CallExpression[callee.name=\'require\']',
           message: 'Use import instead of require.'
         },
         {
-          selector: "MemberExpression[object.name='module'][property.name='exports']",
+          selector: 'MemberExpression[object.name=\'module\'][property.name=\'exports\']',
           message: 'Use ESM export syntax instead of module.exports.'
         },
         {
-          selector: "Identifier[name='__dirname']",
+          selector: 'Identifier[name=\'__dirname\']',
           message: 'Use import.meta.url and URL for __dirname alternative in ESM.'
         },
         {
-          selector: "Identifier[name='__filename']",
+          selector: 'Identifier[name=\'__filename\']',
           message: 'Use import.meta.url and URL for __filename alternative in ESM.'
         }
       ]
