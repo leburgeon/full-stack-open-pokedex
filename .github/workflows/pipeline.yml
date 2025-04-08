@@ -17,5 +17,7 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm install
+      - name: Check style
+        run: npm run eslint
       - name: List directory contents in long format
         run: ls -l
