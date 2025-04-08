@@ -41,7 +41,26 @@ export default [
       'object-curly-spacing': ['error', 'always'],
       'arrow-spacing': ['error', { before: true, after: true }],
       'no-console': 'error',
-      'react/prop-types': 'off'
+      'react/prop-types': 'off',
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: "CallExpression[callee.name='require']",
+          message: 'Use import instead of require.'
+        },
+        {
+          selector: "MemberExpression[object.name='module'][property.name='exports']",
+          message: 'Use ESM export syntax instead of module.exports.'
+        },
+        {
+          selector: "Identifier[name='__dirname']",
+          message: 'Use import.meta.url and URL for __dirname alternative in ESM.'
+        },
+        {
+          selector: "Identifier[name='__filename']",
+          message: 'Use import.meta.url and URL for __filename alternative in ESM.'
+        }
+      ]
     }
   }
 ]

@@ -1,7 +1,7 @@
 import HtmlWebPackPlugin from 'html-webpack-plugin'
 import path from 'path'
 
-module.exports = {
+export default {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
