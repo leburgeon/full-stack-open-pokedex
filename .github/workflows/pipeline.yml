@@ -19,5 +19,7 @@ jobs:
         run: npm install
       - name: Check style
         run: npm run eslint
-      - name: List directory contents in long format
-        run: ls -l
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm run test
