@@ -16,7 +16,7 @@ export default [
       sourceType: 'module',
       globals: {
         ...globals.node,
-        ...jest.environments.globals,
+        ...jest.environments.globals.globals,
         window: 'readonly',
         document: 'readonly'
       },
