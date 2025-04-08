@@ -3,7 +3,7 @@ import react from 'eslint-plugin-react'
 import jest from 'eslint-plugin-jest'
 
 export default [
-  ...js.configs.recommended,
+  js.configs.recommended,
   {
     plugins: {
       react,
