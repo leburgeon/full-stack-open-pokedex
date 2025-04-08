@@ -1,6 +1,8 @@
 import js from '@eslint/js'
 import react from 'eslint-plugin-react'
 import jest from 'eslint-plugin-jest'
+import globals from 'globals'
+
 
 export default [
   js.configs.recommended,
@@ -13,7 +15,7 @@ export default [
       ecmaVersion: 2018,
       sourceType: 'module',
       globals: {
-        ...js.environments.node.globals,
+        ...globals.node,
         ...jest.environments.globals,
         window: 'readonly',
         document: 'readonly'
