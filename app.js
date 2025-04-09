@@ -11,6 +11,6 @@ app.get('/version', (req, res) => {
 })
 
 app.listen(PORT, () => {
-  this_causes_error // eslint-disable-line
+  // this_causes_error
   console.log(`server started on port ${PORT}`) // eslint-disable-line
 })
