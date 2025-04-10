@@ -10,7 +10,6 @@ app.get('/version', (req, res) => {
   res.send('3')
 })
 
-app.listen(PORT, () => {
-  this_causes_error
+app.listen(PORT + 1, () => {
   console.log(`server started on port ${PORT}`) // eslint-disable-line
 })
