@@ -23,7 +23,15 @@ primary_region = 'fra'
   min_machines_running = 0
   processes = ['app']
 
+[[http_service.checks]] # optional section used for health check
+  grace_period = "10s"
+  interval = "30s"
+  method = "GET"
+  timeout = "5s"
+  path = "/health"
 
+[deploy]
+  strategy = "canary"
 
 [[vm]]
   memory = '1gb'
