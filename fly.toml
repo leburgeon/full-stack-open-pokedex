@@ -29,7 +29,7 @@ primary_region = 'fra'
   method = "GET"
   timeout = "5s"
   path = "/health"
-  protocol = "https"
+  protocol = "http"
 
 [deploy]
   strategy = "canary"
