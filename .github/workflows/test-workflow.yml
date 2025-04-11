@@ -1,0 +1,24 @@
+name: testing-skips-and-context
+
+on: 
+  push:
+    branches:
+      - test-workflow-branch
+
+jobs:
+  print-context-from-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: github context print
+        env: 
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: commits print
+        env:
+          COMMITS: ${{ toJson(github.event.commits) }}
+        run: echo "$COMMITS"
+      - name: commit messages print
+        env:
+          COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.messages) }}
+        run: echo "$COMMIT_MESSAGES"
