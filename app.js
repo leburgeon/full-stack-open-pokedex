@@ -15,7 +15,7 @@ app.get('/health', (req, res) => {
 })
 
 app.get('pokemon', (req, res) => {
-  res.status(200).send('r cool')
+  res.status(200).send('is so super awsome!!')
 })
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`) // eslint-disable-line
