@@ -37,6 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [simple_deployment_pipeline] # Ensures that the deployment pipeline is complete before bumping the version
     steps:
+      - if: ${{ github.event_name == 'push' }}
+        uses: actions/checkout@v4
       - if: ${{ github.event_name == 'push' }} # Ensures the version is only bumped on a merge or push
         name: Bump verison and push tag
         uses: anothrNick/github-tag-action@1.71.0
