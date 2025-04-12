@@ -1,5 +1,8 @@
 name: testing-skips-and-context
 
+env:
+  CONTAINS_SKIP_IN_COMMIT: ${{ contains(join(github.event.commits.*.message, ' '), '#skip') }}
+
 on: 
   push:
     branches:
@@ -10,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Checks the commit join and prints
+        env:
+          PRINT: ${{ join(github.event.commits.*.message) }}
+        run: echo "$PRINT"
       - name: github context print
         env: 
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -22,3 +29,6 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
+      - if: ${{ env.CONTAINS_SKIP_IN_COMMIT == 'true' }}
+        name: There was a skip
+        run: echo 'Contained skip somewhere!'
