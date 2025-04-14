@@ -49,7 +49,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: 'patch'
-      - if: success()
+      - if: ${{env.COMMITS_WITHOUT_SKIP_AND_PUSHES == 'true' && success()}}
         env:
           NEW_TAG: ${{steps.version-bump.outputs.new_tag}}
           OLD_TAG: ${{steps.version-bump.outputs.old_tag}}
