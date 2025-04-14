@@ -52,10 +52,10 @@ jobs:
           DEFAULT_BUMP: 'patch'
       - if: ${{env.COMMITS_WITHOUT_SKIP_AND_PUSHES == 'true' && success()}}
         env:
-          NEW_TAG: ${{steps.version-bump.outputs.new_tag}}
-          OLD_TAG: ${{steps.version-bump.outputs.old_tag}}
-          PART: ${{steps.version-bump.outputs.part}}
-          REPO_NAME: ${{github.repository}}
+          NEW_TAG: ${{ steps.version-bump.outputs.new_tag }}
+          OLD_TAG: ${{ steps.version-bump.outputs.old_tag }}
+          PART: ${{ steps.version-bump.outputs.part }}
+          REPO_NAME: ${{ github.repository }}
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: info
@@ -64,4 +64,4 @@ jobs:
           text: Version Update!
           description: A new version of Pokedex has been deployed!
           details: 'A new version is available for ${{env.REPO_NAME}}! ${{env.PART}} release from ${{env.OLD_TAG}} --> ${{env.NEW_TAG}}'
-          webhookUrl: ${{secrets.DISCORD_WEBHOOK}}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
