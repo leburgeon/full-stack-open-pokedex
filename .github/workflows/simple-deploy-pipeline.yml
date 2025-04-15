@@ -30,9 +30,16 @@ jobs:
         run: npm run test
       - name: Build
         run: npm run build  
-      - if: ${{ env.COMMITS_WITHOUT_SKIP_AND_PUSHES == 'true' }}
+      - if: ${{failure()}}
+        name: Notify discord of failed build
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: warn
+          details: Some tests failed
+          webhookUrl: ${{secrets.DISCORD_WEBHOOK}}
+      - if: ${{ env.COMMITS_WITHOUT_SKIP_AND_PUSHES == 'true' && success()}}
         uses: superfly/flyctl-actions/setup-flyctl@master
-      - if: ${{ env.COMMITS_WITHOUT_SKIP_AND_PUSHES == 'true' }}
+      - if: ${{ env.COMMITS_WITHOUT_SKIP_AND_PUSHES == 'true' && success()}}
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
