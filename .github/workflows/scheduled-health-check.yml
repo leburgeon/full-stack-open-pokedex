@@ -3,6 +3,9 @@ name: Scheduled Health-check
 on:
   schedule:
     - cron: '1/5 * * * *' #scheduled to run every five minutes
+  push:
+    branches:
+      - test-base-branch
 
 jobs:
   print-schedule-context:
