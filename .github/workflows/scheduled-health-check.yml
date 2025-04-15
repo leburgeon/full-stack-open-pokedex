@@ -1,0 +1,22 @@
+name: Scheduled Health-check
+
+on:
+  schedule:
+    - cron: '1/5 * * * *' #scheduled to run every five minutes
+
+jobs:
+  print-schedule-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print context
+        env:
+          CONTEXT: ${{toJson(github.event)}}
+          EVENT_NAME: ${{toJson(github.event_name)}}
+        run: echo '$EVENT_NAME and $CONTEXT'
+      - name: notifies print
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          details: Scheduled workflow ran
+          webhookUrl: ${{secrets.DISCORD_WEBHOOK}} 
+  
