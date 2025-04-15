@@ -8,6 +8,7 @@ app.use(express.static('dist'))
 
 app.get('/version', (req, res) => {
   res.send('18')
+  awawassss
 })
 
 app.get('/health', (req, res) => {
