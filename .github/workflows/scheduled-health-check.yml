@@ -5,7 +5,7 @@ on:
     - cron: '1/5 * * * *' #scheduled to run every five minutes
   push:
     branches:
-      - test-base-branch
+      - test-branch-base
 
 jobs:
   print-schedule-context:
