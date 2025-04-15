@@ -3,6 +3,9 @@ name: Scheduled Health-check
 on:
   schedule:
     - cron: '1/5 * * * *' #scheduled to run every five minutes
+  push:
+    branches:
+      - test-branch-base
 
 jobs:
   print-schedule-context:
@@ -12,7 +15,7 @@ jobs:
         env:
           CONTEXT: ${{toJson(github.event)}}
           EVENT_NAME: ${{toJson(github.event_name)}}
-        run: echo '$EVENT_NAME and $CONTEXT'
+        run: echo "$EVENT_NAME and $CONTEXT"
       - name: notifies print
         uses: rjstone/discord-webhook-notify@v1
         with:
