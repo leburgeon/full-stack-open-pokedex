@@ -2,7 +2,7 @@ name: Scheduled Health-check
 
 on:
   schedule:
-    - cron: '5/6 0-23 * * *' #scheduled to run every five minutes
+    - cron: '3/6 0-23 * * *' #scheduled to run every five minutes
 
 env:
   HEALTH_CHECK_URL: https://full-stack-open-pokedex-little-hill-4471.fly.dev/health
