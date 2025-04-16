@@ -2,7 +2,7 @@ name: Scheduled Health-check
 
 on:
   schedule:
-    - cron: '5/6 0-23 * * *' #scheduled to run every five minutes
+    - cron: '40 8 * * *' #scheduled to run every five minutes
   push:
     branches:
       - test-branch-base
